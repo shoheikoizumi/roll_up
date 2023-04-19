@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">喫煙所マップ</h1>
+        <p class="lead">喫煙所の位置情報を地図上で確認できます。</p>
+    </div>
+</div>
+<div class="container">
+    <div id="map" style="height: 100vh;"></div>
+</div>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&callback=initMap"></script>
+
+<script>
+    var map;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 35.6895, lng: 139.6917},
+            zoom: 15
+        });
+    }
+</script>
+
+{% endblock %}
